@@ -1,6 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import AdvisorResult from './AdvisorResult'
+import { MapPin, Target, Sparkles, AlertCircle, Check } from 'lucide-react'
 
 export default function CropAdvisor({ isHindi }) {
   const [formData, setFormData] = useState({
@@ -14,40 +15,57 @@ export default function CropAdvisor({ isHindi }) {
   
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState(null)
+  const [error, setError] = useState(null)
+  
+  // Track form completeness for step indicator
+  const completedSteps = [
+    formData.district,
+    formData.soil,
+    formData.irrigation && formData.area && formData.budget && formData.season
+  ].filter(Boolean).length;
   
   const districts = ['Agra', 'Aligarh', 'Allahabad', 'Ambedkar Nagar', 'Amethi', 'Amroha', 'Auraiya', 'Ayodhya', 'Azamgarh', 'Baghpat', 'Bahraich', 'Ballia', 'Balrampur', 'Banda', 'Barabanki', 'Bareilly', 'Basti', 'Bhadohi', 'Bijnor', 'Budaun', 'Bulandshahr', 'Chandauli', 'Chitrakoot', 'Deoria', 'Meerut']
   
   const soils = [
-    { id: 'alluvial', en: 'Alluvial', hi: 'जलोढ़ मिट्टी' },
-    { id: 'black', en: 'Black', hi: 'काली मिट्टी' },
-    { id: 'red', en: 'Red', hi: 'लाल मिट्टी' },
-    { id: 'loamy', en: 'Loamy', hi: 'दोमट मिट्टी' },
-    { id: 'sandy', en: 'Sandy', hi: 'बलुई मिट्टी' },
-    { id: 'clay', en: 'Clay', hi: 'चिकनी मिट्टी' }
+    { id: 'loamy', en: 'Loamy Soil', hi: 'दोमट मिट्टी', desc_en: 'Best for most crops', desc_hi: 'ज्यादातर फसलों के लिए', color: 'bg-amber-700', bg: 'bg-amber-50', border: 'border-amber-200', ring: 'ring-amber-500' },
+    { id: 'sandy', en: 'Sandy Soil', hi: 'बलुई मिट्टी', desc_en: 'Needs frequent water', desc_hi: 'अधिक पानी चाहिए', color: 'bg-yellow-300', bg: 'bg-yellow-50', border: 'border-yellow-200', ring: 'ring-yellow-400' },
+    { id: 'clay', en: 'Clay Soil', hi: 'चिकनी मिट्टी', desc_en: 'Holds water well', desc_hi: 'पानी रोकती है', color: 'bg-stone-500', bg: 'bg-stone-50', border: 'border-stone-200', ring: 'ring-stone-400' },
+    { id: 'black', en: 'Black Soil', hi: 'काली मिट्टी', desc_en: 'Great for cotton', desc_hi: 'कपास के लिए उत्तम', color: 'bg-gray-800', bg: 'bg-gray-100', border: 'border-gray-300', ring: 'ring-gray-800' },
+    { id: 'red', en: 'Red Soil', hi: 'लाल मिट्टी', desc_en: 'Needs fertilizers', desc_hi: 'खाद की जरूरत', color: 'bg-red-600', bg: 'bg-red-50', border: 'border-red-200', ring: 'ring-red-500' },
+    { id: 'alluvial', en: 'Alluvial Soil', hi: 'जलोढ़ मिट्टी', desc_en: 'Highly fertile', desc_hi: 'बहुत उपजाऊ', color: 'bg-blue-300', bg: 'bg-blue-50', border: 'border-blue-200', ring: 'ring-blue-400' }
   ]
   
   const irrigations = [
-    { id: 'tubewell', en: 'Tube Well', hi: 'ट्यूबवेल / बोरवेल' },
-    { id: 'canal', en: 'Canal', hi: 'नहर' },
-    { id: 'rain', en: 'Rain-fed', hi: 'बारिश पर निर्भर' },
-    { id: 'drip', en: 'Drip/Sprinkler', hi: 'ड्रिप सिंचाई' }
+    { id: 'tubewell', en: 'Tube Well', hi: 'ट्यूबवेल', icon: '⚙️' },
+    { id: 'canal', en: 'Canal', hi: 'नहर', icon: '🌊' },
+    { id: 'rain', en: 'Rain-fed', hi: 'बारिश', icon: '🌧️' },
+    { id: 'drip', en: 'Drip/Sprinkler', hi: 'ड्रिप', icon: '💧' }
   ]
   
   const budgets = [
-    { id: 'low', en: 'Low (< ₹10k/acre)', hi: 'कम (< ₹10k/एकड़)' },
-    { id: 'medium', en: 'Medium (₹10k-25k/acre)', hi: 'मध्यम (₹10k-25k/एकड़)' },
-    { id: 'high', en: 'High (> ₹25k/acre)', hi: 'अधिक (> ₹25k/एकड़)' }
+    { id: 'low', en: 'Low Budget', hi: 'कम बजट', desc_en: '< ₹10k/acre', desc_hi: '₹10,000 से कम/acre', crops_en: 'Veggies, Pulses', crops_hi: 'सब्जी, दाल, अनाज', icon: '💵', badge: null },
+    { id: 'medium', en: 'Medium Budget', hi: 'मध्यम बजट', desc_en: '₹10k-25k/acre', desc_hi: '₹10,000-25,000/acre', crops_en: 'Wheat, Mustard', crops_hi: 'गेहूं, सरसों, मक्का', icon: '💰', badge: isHindi ? 'लोकप्रिय' : 'Popular' },
+    { id: 'high', en: 'High Budget', hi: 'अधिक बजट', desc_en: '₹25k+/acre', desc_hi: '₹25,000+/acre', crops_en: 'Horticulture', crops_hi: 'बागवानी, मसाले', icon: '💎', badge: null }
   ]
   
   const seasons = [
-    { id: 'rabi', en: 'Rabi (Oct-Mar)', hi: 'रबी (अक्टूबर-मार्च)' },
-    { id: 'kharif', en: 'Kharif (Jun-Oct)', hi: 'खरीफ (जून-अक्टूबर)' },
-    { id: 'zaid', en: 'Zaid (Mar-Jun)', hi: 'ज़ायद (मार्च-जून)' }
+    { id: 'rabi', en: 'Rabi Season', hi: 'रबी सीजन', months: 'Oct - March', crops_hi: 'गेहूं, सरसों', crops_en: 'Wheat, Mustard', icon: '❄️' },
+    { id: 'kharif', en: 'Kharif Season', hi: 'खरीफ सीजन', months: 'June - Sep', crops_hi: 'धान, मक्का', crops_en: 'Rice, Maize', icon: '☀️' },
+    { id: 'zaid', en: 'Zaid Season', hi: 'जायद सीजन', months: 'April - June', crops_hi: 'तरबूज, खीरा', crops_en: 'Watermelon, Veggies', icon: '🌸' }
   ]
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    // Check if form is valid (just to trigger animations if missed)
+    if (!formData.district || !formData.soil || !formData.irrigation || !formData.area || !formData.budget || !formData.season) {
+      setError(isHindi ? 'कृपया सभी जानकारी भरें' : 'Please fill all details');
+      setTimeout(() => setError(null), 3000);
+      return;
+    }
+
     setLoading(true)
+    setError(null)
     
     try {
       const res = await fetch('/api/wiki/recommend', {
@@ -59,182 +77,302 @@ export default function CropAdvisor({ isHindi }) {
       const data = await res.json()
       if (data.success) {
         setResult(data.data)
+        // Scroll to results smoothly
+        setTimeout(() => {
+          document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
       } else {
-        alert(isHindi ? 'कुछ गलत हो गया' : 'Something went wrong')
+        setError(isHindi ? 'कुछ गलत हो गया' : 'Something went wrong')
       }
     } catch (err) {
       console.error(err)
-      alert(isHindi ? 'सर्वर से कनेक्ट नहीं हो सका' : 'Could not connect to server')
+      setError(isHindi ? 'सर्वर से कनेक्ट नहीं हो सका' : 'Could not connect to server')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 pb-20">
-      <div className="bg-white rounded-3xl shadow-sm border border-green-100 overflow-hidden">
-        <div className="bg-gradient-to-r from-green-800 to-green-600 p-8 text-white text-center">
-          <div className="text-5xl border-4 border-white/20 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 bg-white/10 backdrop-blur-sm">🤖</div>
-          <h2 className="text-3xl font-black mb-2">
-            {isHindi ? 'स्मार्ट फसल सलाहकार' : 'Smart Crop Advisor'}
-          </h2>
-          <p className="text-green-50 text-lg opacity-90">
-            {isHindi ? 'अपनी ज़मीन की जानकारी दें, AI आपको सबसे बेहतरीन फसल बताएगा' : 'Tell us about your land, and our AI will recommend the best crops'}
-          </p>
+    <div className="max-w-4xl mx-auto pb-24">
+      
+      {/* Curved Top Background */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-[-1] bg-[#F0F7F0]" 
+      />
+
+      {/* Main Form Card */}
+      <div className="bg-white rounded-3xl shadow-xl shadow-green-900/5 relative mt-8">
+        
+        {/* Gradient Border Top */}
+        <div className="h-2 w-full bg-gradient-to-r from-green-500 via-emerald-400 to-green-600 rounded-t-3xl absolute top-0 left-0" />
+        
+        <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-12 pt-10">
           
-          <div className="flex justify-center gap-4 mt-8">
-            <div className="flex flex-col items-center">
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold mb-2">1</div>
-              <span className="text-sm font-medium opacity-90">{isHindi ? 'लोकेशन दें' : 'Location'}</span>
-            </div>
-            <div className="w-8 border-t-2 border-white/20 mt-5"></div>
-            <div className="flex flex-col items-center">
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold mb-2">2</div>
-              <span className="text-sm font-medium opacity-90">{isHindi ? 'मिट्टी बताएं' : 'Soil Info'}</span>
-            </div>
-            <div className="w-8 border-t-2 border-white/20 mt-5"></div>
-            <div className="flex flex-col items-center">
-              <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold mb-2">3</div>
-              <span className="text-sm font-medium opacity-90">{isHindi ? 'फसल पाएं' : 'Get Crop'}</span>
-            </div>
+          {/* Progress Step Indicator */}
+          <div className="flex items-center justify-between mx-auto max-w-sm mb-4 relative">
+             <div className="absolute top-1/2 left-0 w-full h-0.5 bg-gray-100 -z-10 -translate-y-1/2 rounded-full"></div>
+             <div className="absolute top-1/2 left-0 h-0.5 bg-green-500 -z-10 -translate-y-1/2 rounded-full transition-all duration-500" style={{ width: `${(completedSteps / 3) * 100}%` }}></div>
+             
+             <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${completedSteps >= 0 ? 'bg-green-600 text-white shadow-md shadow-green-200' : 'bg-gray-200 text-gray-500'}`}>1</div>
+             <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${completedSteps >= 1 ? 'bg-green-600 text-white shadow-md shadow-green-200' : 'bg-gray-200 text-gray-500'}`}>2</div>
+             <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${completedSteps >= 2 ? 'bg-green-600 text-white shadow-md shadow-green-200' : 'bg-gray-200 text-gray-500'}`}>3</div>
+             <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${completedSteps >= 3 ? 'bg-green-600 text-white shadow-md shadow-green-200' : 'bg-gray-200 text-gray-500'}`}>
+               <Check size={16} strokeWidth={3} />
+             </div>
           </div>
-        </div>
-
-        <form onSubmit={handleSubmit} className="p-8 space-y-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Location */}
-            <div className="space-y-3">
-              <label className="block text-sm font-bold text-gray-700">
-                {isHindi ? 'जिला (उत्तर प्रदेश)' : 'District (UP)'} *
-              </label>
-              <select 
-                required
-                className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
-                value={formData.district}
-                onChange={e => setFormData({...formData, district: e.target.value})}
-              >
-                <option value="">{isHindi ? 'जिला चुनें...' : 'Select District...'}</option>
-                {districts.sort().map(d => <option key={d} value={d}>{d}</option>)}
-              </select>
-            </div>
-
-            {/* Land Area */}
-             <div className="space-y-3">
-              <label className="block text-sm font-bold text-gray-700">
-                {isHindi ? 'कुल जमीन (एकड़ में)' : 'Land Area (Acres)'} *
-              </label>
-              <input 
-                type="number"
-                required
-                min="0.1"
-                step="0.1"
-                className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
-                value={formData.area}
-                onChange={e => setFormData({...formData, area: e.target.value})}
-                placeholder="Ex: 2.5"
-              />
-            </div>
-
-            {/* Irrigation */}
-            <div className="space-y-3">
-              <label className="block text-sm font-bold text-gray-700">
-                {isHindi ? 'सिंचाई की सुविधा' : 'Irrigation Facility'} *
-              </label>
-              <select 
-                required
-                className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
-                value={formData.irrigation}
-                onChange={e => setFormData({...formData, irrigation: e.target.value})}
-              >
-                <option value="">{isHindi ? 'सिंचाई का साधन चुनें...' : 'Select Irrigation type...'}</option>
-                {irrigations.map(i => <option key={i.id} value={i.id}>{isHindi ? i.hi : i.en}</option>)}
-              </select>
-            </div>
-
-             {/* Season */}
-             <div className="space-y-3">
-              <label className="block text-sm font-bold text-gray-700">
-                {isHindi ? 'सीजन' : 'Season'} *
-              </label>
-              <select 
-                required
-                className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none"
-                value={formData.season}
-                onChange={e => setFormData({...formData, season: e.target.value})}
-              >
-                <option value="">{isHindi ? 'सीजन चुनें...' : 'Select Season...'}</option>
-                {seasons.map(s => <option key={s.id} value={s.id}>{isHindi ? s.hi : s.en}</option>)}
-              </select>
-            </div>
-             {/* Budget */}
-             <div className="space-y-3 md:col-span-2">
-              <label className="block text-sm font-bold text-gray-700">
-                {isHindi ? 'आपका बजट' : 'Your Budget'} *
-              </label>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                {budgets.map(b => (
-                  <button
-                    key={b.id}
-                    type="button"
-                    onClick={() => setFormData({...formData, budget: b.id})}
-                    className={`p-4 rounded-xl border text-left transition-all ${formData.budget === b.id ? 'border-green-500 bg-green-50 ring-2 ring-green-200' : 'border-gray-200 hover:border-green-300'}`}
+          
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            {/* Section: District & Area */}
+            <div className="md:col-span-2 space-y-6">
+              <h3 className="text-xl font-bold flex items-center gap-2 border-b border-gray-100 pb-3">
+                📍 {isHindi ? 'आपकी Location' : 'Your Farm Location'}
+              </h3>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-3 group relative">
+                  <label className="block text-sm font-bold text-gray-700">
+                    {isHindi ? 'जिला (उत्तर प्रदेश)' : 'District (UP)'} 
+                  </label>
+                  <select 
+                    required
+                    className="w-full p-4 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-100 focus:border-green-500 focus:bg-white outline-none transition-all appearance-none font-medium text-gray-800"
+                    value={formData.district}
+                    onChange={e => setFormData({...formData, district: e.target.value})}
                   >
-                    <div className={`font-bold ${formData.budget === b.id ? 'text-green-800' : 'text-gray-700'}`}>
-                      {isHindi ? b.hi : b.en}
-                    </div>
-                  </button>
-                ))}
+                    <option value="">{isHindi ? 'जिला चुनें...' : 'Select District...'}</option>
+                    {districts.sort().map(d => <option key={d} value={d}>{d}</option>)}
+                  </select>
+                  <div className="absolute right-4 top-[42px] pointer-events-none text-gray-400 group-hover:text-green-600 transition-colors">▼</div>
+                  {formData.district && <p className="text-xs text-green-600 font-semibold px-2 animate-in fade-in slide-in-from-top-1">{isHindi ? 'राज्य: उत्तर प्रदेश' : 'State: Uttar Pradesh'}</p>}
+                </div>
+
+                <div className="space-y-3 relative group">
+                  <label className="block text-sm font-bold text-gray-700">
+                    🚜 {isHindi ? 'कुल जमीन' : 'Farm Area'} 
+                  </label>
+                  <div className="relative">
+                    <input 
+                      type="number"
+                      required
+                      min="0.1"
+                      step="0.1"
+                      className="w-full p-4 pr-16 bg-gray-50 border border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-100 focus:border-green-500 focus:bg-white outline-none transition-all font-bold text-gray-800 text-lg placeholder:font-normal placeholder:text-base"
+                      value={formData.area}
+                      onChange={e => setFormData({...formData, area: e.target.value})}
+                      placeholder="Ex: 2.5"
+                    />
+                    <div className="absolute right-4 top-[18px] text-gray-500 font-medium">Acres</div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Soil Type Cards */}
-            <div className="space-y-3 md:col-span-2">
-              <label className="block text-sm font-bold text-gray-700">
-                {isHindi ? 'मिट्टी का प्रकार' : 'Soil Type'} *
-              </label>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {soils.map(s => (
-                  <button
-                    key={s.id}
-                    type="button"
-                    onClick={() => setFormData({...formData, soil: s.id})}
-                    className={`p-4 rounded-xl border text-center transition-all ${formData.soil === s.id ? 'border-amber-500 bg-amber-50 ring-2 ring-amber-200' : 'border-gray-200 bg-white hover:border-amber-300'}`}
-                  >
-                    <div className="w-8 h-8 mx-auto bg-amber-100 rounded-full mb-2"></div>
-                    <div className={`font-semibold text-sm ${formData.soil === s.id ? 'text-amber-900' : 'text-gray-700'}`}>
-                      {isHindi ? s.hi : s.en}
-                    </div>
-                  </button>
-                ))}
+            {/* Section: Soil Type */}
+            <div className="md:col-span-2 space-y-4">
+              <h3 className="text-xl font-bold flex items-center gap-2 border-b border-gray-100 pb-3">
+                🌱 {isHindi ? 'मिट्टी का प्रकार' : 'Soil Type'}
+              </h3>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+                {soils.map(s => {
+                  const isSelected = formData.soil === s.id;
+                  return (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => setFormData({...formData, soil: s.id})}
+                      className={`relative p-4 rounded-2xl border-2 text-left transition-all duration-300 overflow-hidden ${
+                        isSelected 
+                          ? `${s.bg} ${s.border} ring-4 ${s.ring} shadow-sm scale-[1.02]` 
+                          : 'border-gray-100 bg-white hover:border-gray-300 hover:shadow-md hover:-translate-y-0.5'
+                      }`}
+                    >
+                      {isSelected && (
+                        <div className="absolute top-2 right-2 text-green-600 bg-white rounded-full p-0.5 shadow-sm z-10 animate-in zoom-in">
+                          <Check size={14} strokeWidth={4} />
+                        </div>
+                      )}
+                      <div className="flex items-start gap-3">
+                        <div className={`w-8 h-8 rounded-lg shrink-0 mt-0.5 shadow-inner ${s.color}`}></div>
+                        <div>
+                          <div className={`font-bold text-base mb-0.5 ${isSelected ? 'text-gray-900' : 'text-gray-800'}`}>
+                            {isHindi ? s.hi : s.en}
+                          </div>
+                          <div className={`text-xs ${isSelected ? 'text-gray-700 font-medium' : 'text-gray-500'}`}>
+                            {isHindi ? s.desc_hi : s.desc_en}
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Section: Irrigation */}
+            <div className="md:col-span-2 space-y-4 pt-4">
+              <h3 className="text-xl font-bold flex items-center gap-2 border-b border-gray-100 pb-3">
+                💧 {isHindi ? 'सिंचाई की सुविधा' : 'Irrigation Facility'}
+              </h3>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                {irrigations.map(i => {
+                  const isSelected = formData.irrigation === i.id;
+                  return (
+                    <button
+                      key={i.id}
+                      type="button"
+                      onClick={() => setFormData({...formData, irrigation: i.id})}
+                      className={`p-4 rounded-2xl border-2 text-center transition-all duration-300 flex flex-col items-center justify-center gap-2 ${
+                        isSelected 
+                          ? 'border-blue-500 bg-blue-600 text-white shadow-lg shadow-blue-500/30 scale-[1.03]' 
+                          : 'border-gray-100 bg-white text-gray-700 hover:border-blue-200 hover:bg-blue-50'
+                      }`}
+                    >
+                      <div className="text-3xl filter drop-shadow-sm">{i.icon}</div>
+                      <div className="font-bold text-sm tracking-wide">
+                        {isHindi ? i.hi : i.en}
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Section: Season */}
+            <div className="md:col-span-2 space-y-4 pt-4">
+               <h3 className="text-xl font-bold flex items-center gap-2 border-b border-gray-100 pb-3">
+                🗓️ {isHindi ? 'सीजन' : 'Season'}
+              </h3>
+              
+              <div className="grid md:grid-cols-3 gap-4">
+                {seasons.map(s => {
+                  const isSelected = formData.season === s.id;
+                  return (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => setFormData({...formData, season: s.id})}
+                      className={`relative p-5 rounded-3xl border-2 text-left transition-all duration-300 ${
+                        isSelected 
+                          ? 'border-green-500 bg-green-50 shadow-md scale-[1.02]' 
+                          : 'border-gray-100 bg-white hover:border-green-200 hover:bg-green-50/50 hover:shadow-sm hover:-translate-y-1'
+                      }`}
+                    >
+                      {isSelected && (
+                        <div className="absolute top-4 right-4 text-white bg-green-500 rounded-full p-1 shadow-sm animate-in zoom-in">
+                          <Check size={16} strokeWidth={3} />
+                        </div>
+                      )}
+                      <div className="text-4xl mb-3 filter drop-shadow-sm">{s.icon}</div>
+                      <h4 className={`font-black text-xl mb-1 ${isSelected ? 'text-green-800' : 'text-gray-900'}`}>
+                        {isHindi ? s.hi : s.en}
+                      </h4>
+                      <p className="text-sm font-semibold text-gray-500 mb-3">{s.months}</p>
+                      <div className="inline-block bg-white/80 border border-black/5 px-2 py-1 rounded-md text-xs font-medium text-gray-600">
+                        {isHindi ? s.crops_hi : s.crops_en}
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+
+            {/* Section: Budget */}
+            <div className="md:col-span-2 space-y-4 pt-4 mb-2">
+              <h3 className="text-xl font-bold flex items-center gap-2 border-b border-gray-100 pb-3">
+                💰 {isHindi ? 'आपका बजट' : 'Your Budget'}
+              </h3>
+              
+              <div className="grid md:grid-cols-3 gap-4">
+                {budgets.map(b => {
+                  const isSelected = formData.budget === b.id;
+                  return (
+                    <button
+                      key={b.id}
+                      type="button"
+                      onClick={() => setFormData({...formData, budget: b.id})}
+                      className={`relative p-5 rounded-3xl border-2 text-left transition-all duration-300 ${
+                        isSelected 
+                          ? 'border-emerald-500 bg-emerald-50 shadow-md scale-[1.02]' 
+                          : 'border-gray-100 bg-white hover:border-emerald-200 hover:shadow-sm hover:-translate-y-1'
+                      }`}
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                         <div className="text-3xl">{b.icon}</div>
+                         {b.badge && (
+                           <div className="bg-amber-100 text-amber-800 text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded-full whitespace-nowrap border border-amber-200 shadow-sm animate-pulse flex items-center gap-1">
+                             ★ {b.badge}
+                           </div>
+                         )}
+                      </div>
+                      
+                      <h4 className={`font-black text-lg mb-0.5 ${isSelected ? 'text-emerald-800' : 'text-gray-900'}`}>
+                        {isHindi ? b.hi : b.en}
+                      </h4>
+                      <p className={`text-sm font-bold mb-3 ${isSelected ? 'text-emerald-600' : 'text-gray-500'}`}>
+                        {isHindi ? b.desc_hi : b.desc_en}
+                      </p>
+                      <div className="text-xs font-semibold text-gray-500 bg-black/5 rounded-lg p-2">
+                        {isHindi ? b.crops_hi : b.crops_en}
+                      </div>
+
+                      {isSelected && (
+                         <div className="absolute -inset-1 border-2 border-emerald-500 rounded-[28px] animate-pulse pointer-events-none opacity-50"></div>
+                      )}
+                    </button>
+                  )
+                })}
               </div>
             </div>
           </div>
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-green-600 text-white font-black text-xl py-5 rounded-2xl shadow-lg hover:bg-green-700 hover:shadow-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3"
-          >
-            {loading ? (
-              <>
-                 <div className="w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-                 {isHindi ? 'AI विश्लेषण कर रहा है...' : 'AI is analyzing...'}
-              </>
-            ) : (
-              <>
-                <span className="text-2xl">✨</span> 
-                {isHindi ? 'मेरी फसल बताएं' : 'Get Crop Recommendations'}
-              </>
+          {/* Form Actions */}
+          <div className="pt-6 relative">
+            {error && (
+              <div className="absolute -top-12 left-0 right-0 max-w-sm mx-auto bg-red-100 text-red-700 px-4 py-2 rounded-xl flex items-center justify-center gap-2 font-semibold shadow-sm animate-in slide-in-from-bottom-2 fade-in">
+                <AlertCircle size={18} /> {error}
+              </div>
             )}
-          </button>
+            <button
+              type="submit"
+              disabled={loading}
+              className={`group w-full h-[68px] sm:h-20 bg-gradient-to-r from-[#1B5E20] to-[#2E7D32] hover:from-[#134216] hover:to-[#215E24] text-white font-black text-xl md:text-2xl rounded-3xl shadow-xl shadow-green-900/20 hover:shadow-2xl hover:shadow-green-900/30 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-3 overflow-hidden relative ${error ? 'animate-shake' : ''}`}
+            >
+              {/* Button Shine Effect */}
+              <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] group-hover:animate-shine"></div>
+              
+              {loading ? (
+                <>
+                   <div className="w-8 h-8 border-[5px] border-white/30 border-t-white rounded-full animate-spin"></div>
+                   <span className="tracking-wide">{isHindi ? 'AI सोच रहा है...' : 'AI is thinking...'}</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles size={28} className="text-yellow-300 group-hover:scale-125 transition-transform duration-500" /> 
+                  <span className="tracking-wide group-hover:-translate-y-0.5 transition-transform">{isHindi ? 'बेहतरीन फसल बताएं' : 'Discover Best Crop'}</span>
+                </>
+              )}
+            </button>
+          </div>
         </form>
       </div>
 
-      {result && (
-        <div id="results-section">
-          <AdvisorResult result={result} isHindi={isHindi} />
-        </div>
-      )}
+      {/* Results Section */}
+      <div id="results-section">
+        {result && (
+          <div className="mt-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
+             <div className="flex items-center gap-4 mb-8 max-w-[80%] mx-auto">
+                <div className="h-px bg-gray-300 flex-1"></div>
+                <div className="text-sm font-bold text-gray-400 uppercase tracking-widest px-4 bg-[#F0F7F0] rounded-full py-1 border border-gray-200">
+                  {isHindi ? 'परिणाम' : 'Results'}
+                </div>
+                <div className="h-px bg-gray-300 flex-1"></div>
+             </div>
+             <AdvisorResult result={result} isHindi={isHindi} />
+          </div>
+        )}
+      </div>
     </div>
   )
 }
