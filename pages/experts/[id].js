@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { ArrowLeft, CheckCircle2, Clock, MapPin, MessageCircle, Phone, Video, Calendar, ThumbsUp, ChevronRight } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Clock, MapPin, MessageCircle, Phone, Video, Calendar, ThumbsUp, ChevronRight, Star } from 'lucide-react';
 import RatingStars from '../../src/components/experts/RatingStars';
 import ExpertBadge from '../../src/components/experts/ExpertBadge';
 import BookingCalendar from '../../src/components/experts/BookingCalendar';
