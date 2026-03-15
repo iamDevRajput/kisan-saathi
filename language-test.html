@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Toggle Test</title>
+</head>
+<body>
+    <div id="app"></div>
+    
+    <script>
+        // Simple test to verify language switching logic
+        const content = {
+            en: {
+                title: "English Title",
+                description: "This is English text"
+            },
+            hi: {
+                title: "हिंदी शीर्षक",
+                description: "यह हिंदी पाठ है"
+            }
+        };
+        
+        let currentLanguage = 'hi';
+        const app = document.getElementById('app');
+        
+        function updateContent() {
+            const texts = content[currentLanguage];
+            app.innerHTML = `
+                <div style="padding: 2rem; font-family: Arial, sans-serif;">
+                    <h1>Language Toggle Test</h1>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <button onclick="setLanguage('en')" 
+                                style="padding: 10px 20px; margin-right: 10px; 
+                                       background-color: ${currentLanguage === 'en' ? '#0A6B3A' : '#ccc'}; 
+                                       color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            English
+                        </button>
+                        <button onclick="setLanguage('hi')" 
+                                style="padding: 10px 20px; 
+                                       background-color: ${currentLanguage === 'hi' ? '#0A6B3A' : '#ccc'}; 
+                                       color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            हिंदी
+                        </button>
+                    </div>
+                    
+                    <div style="padding: 20px; background-color: #f0f0f0; border-radius: 8px;">
+                        <h2>${texts.title}</h2>
+                        <p>${texts.description}</p>
+                        <p><strong>Current language:</strong> ${currentLanguage}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            updateContent();
+        }
+        
+        // Initialize
+        updateContent();
+    </script>
+</body>
+</html>

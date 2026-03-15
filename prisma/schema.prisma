@@ -1,0 +1,1282 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==================== USER MANAGEMENT ====================
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  password      String?
+  image         String?
+  phone         String?
+  role          UserRole  @default(FARMER)
+  language      String    @default("hi") // Preferred language code
+  location      String?   // District/State
+  latitude      Float?
+  longitude     Float?
+  emailVerified DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  farms               Farm[]
+  cropRecommendations CropRecommendation[]
+  cropAdvisories      CropAdvisory[]
+  cropProfiles        CropProfile[]
+  diseaseDetections   DiseaseDetection[]
+  weatherAlerts       WeatherAlert[]
+  marketPriceAlerts   MarketPriceAlert[]
+  schemeApplications  SchemeApplication[]
+  eligibility         UserEligibility?
+  activities          UserActivity[]
+  consultations       Consultation[]
+  posts               Post[]    @relation("UserPosts")
+  comments            Comment[] @relation("UserComments")
+
+  @@map("users")
+}
+
+enum UserRole {
+  ADMIN
+  FARMER
+  EXPERT
+  AGENT
+}
+
+// ==================== FARM MANAGEMENT ====================
+
+model Farm {
+  id          String   @id @default(cuid())
+  name        String
+  location    String
+  size        Float // in acres
+  soilType    SoilType?
+  soilPh      Float?
+  soilMoisture Float?
+  latitude    Float?
+  longitude   Float?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user  User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  crops Crop[]
+
+  @@map("farms")
+}
+
+model Crop {
+  id          String    @id @default(cuid())
+  name        String
+  variety     String?
+  area        Float // acres planted
+  plantingDate DateTime?
+  harvestDate  DateTime?
+  status      CropStatus @default(PLANTED)
+  farmId      String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  farm Farm @relation(fields: [farmId], references: [id], onDelete: Cascade)
+
+  @@map("crops")
+}
+
+enum SoilType {
+  ALLUVIAL
+  BLACK
+  RED
+  LATERITE
+  ARID
+  FOREST
+  MOUNTAIN
+  DESERT
+}
+
+enum CropStatus {
+  PLANTED
+  GROWING
+  FLOWERING
+  FRUITING
+  HARVESTED
+}
+
+// ==================== AI CROP RECOMMENDATION ====================
+
+model CropRecommendation {
+  id              String   @id @default(cuid())
+  userId          String
+  farmId          String?
+  
+  // Input Parameters
+  soilType        SoilType
+  soilPh          Float?
+  climate         Climate
+  season          Season
+  rainfall        Float? // mm
+  temperature     Float? // celsius
+  humidity        Float? // percentage
+  
+  // AI Output
+  recommendations Json // Array of recommended crops with confidence scores
+  topRecommendation String
+  confidenceScore Float
+  expectedYield   Json? // Expected yield per acre for each crop
+  
+  // Metadata
+  createdAt       DateTime @default(now())
+  feedback        String?  // User feedback on recommendation
+  rating          Int?     // 1-5 rating
+  implemented     Boolean  @default(false)
+  actualYield     Float?   // If implemented, actual yield achieved
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("crop_recommendations")
+}
+
+// ==================== AI CROP ADVISORY ====================
+
+model CropAdvisory {
+  id              String   @id @default(cuid())
+  userId          String
+  cropProfileId   String?
+  
+  // Crop Details
+  cropName        String
+  stage           CropStage
+  location        String
+  
+  // Input Data
+  soilData        Json?    // NPK, pH, moisture etc
+  weatherData     Json?    // Current weather conditions
+  
+  // AI Advisory Output
+  advisory        Json     // Full advisory JSON
+  summary         String
+  immediateActions String[]
+  urgency         AdvisoryUrgency @default(MEDIUM)
+  
+  // Metadata
+  language        String   @default("hi")
+  isRead          Boolean  @default(false)
+  validUntil      DateTime?
+  createdAt       DateTime @default(now())
+
+  // Relations
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cropProfile CropProfile? @relation(fields: [cropProfileId], references: [id])
+
+  @@map("crop_advisories")
+}
+
+model CropProfile {
+  id              String   @id @default(cuid())
+  userId          String
+  
+  name            String
+  variety         String?
+  sowingDate      DateTime?
+  area            Float?   // in acres
+  irrigationType  IrrigationType?
+  soilType        SoilType?
+  
+  lastAdvisoryAt  DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  advisories CropAdvisory[]
+
+  @@map("crop_profiles")
+}
+
+enum CropStage {
+  SEEDLING
+  VEGETATIVE
+  FLOWERING
+  FRUITING
+  MATURITY
+  HARVEST
+}
+
+enum AdvisoryUrgency {
+  CRITICAL
+  HIGH
+  MEDIUM
+  LOW
+}
+
+enum IrrigationType {
+  DRIP
+  SPRINKLER
+  FLOOD
+  FURROW
+  RAINFED
+}
+
+enum Climate {
+  TROPICAL
+  SUBTROPICAL
+  TEMPERATE
+  ARID
+  MOUNTAIN
+}
+
+enum Season {
+  KHARIF
+  RABI
+  ZAID
+}
+
+// ==================== AI DISEASE DETECTION ====================
+
+model DiseaseDetection {
+  id              String   @id @default(cuid())
+  userId          String
+  cropId          String?
+  cropName        String?
+  
+  // Image Analysis
+  imageUrl        String
+  imageHash       String?  // For duplicate detection
+  
+  // AI Detection Results
+  diseaseName     String
+  scientificName  String?
+  confidence      Float    // 0-1 confidence score
+  severity        Int      @default(5) // 0-10 scale
+  affectedArea    Float?   // percentage of plant affected
+  
+  // Disease Details
+  symptoms        String[]
+  causes          String[]
+  
+  // Treatment Recommendations
+  treatmentPlan   Json?    // Full treatment plan
+  organicTreatments   Json[] // Array of organic treatment options
+  chemicalTreatments  Json[] // Array of chemical treatment options
+  preventiveMeasures  String[]
+  
+  // Estimated Loss
+  estimatedLoss   String?
+  
+  // Follow-up
+  treatmentStarted   Boolean @default(false)
+  status             DetectionStatus @default(DETECTED)
+  recoveryImages     String[] // Follow-up images
+  resolvedAt         DateTime?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("disease_detections")
+}
+
+model PestAlert {
+  id              String   @id @default(cuid())
+  
+  region          String
+  district        String
+  state           String   @default("UP")
+  
+  pestName        String
+  pestNameHindi   String?
+  severity        Int      // 0-10 scale
+  affectedCrops   Json     // Array of affected crop names
+  
+  description     String?
+  preventiveMeasures String[]
+  
+  source          String?  // Source of alert (govt, community, etc)
+  isActive        Boolean  @default(true)
+  reportedAt      DateTime @default(now())
+  expiresAt       DateTime?
+
+  @@index([district, state])
+  @@map("pest_alerts")
+}
+
+enum DetectionStatus {
+  DETECTED
+  TREATING
+  TREATED
+  RESOLVED
+  CHRONIC
+}
+
+// ==================== WEATHER ====================
+
+model WeatherData {
+  id          String   @id @default(cuid())
+  location    String
+  latitude    Float
+  longitude   Float
+  
+  // Current Weather
+  date        DateTime @default(now())
+  temperature Float    // celsius
+  feelsLike   Float?
+  humidity    Int      // percentage
+  pressure    Float?   // hPa
+  windSpeed   Float?   // km/h
+  windDirection String?
+  visibility  Float?   // km
+  uvIndex     Float?
+  
+  // Conditions
+  condition   WeatherCondition
+  description String
+  icon        String
+  
+  // Precipitation
+  rainfall    Float?   // mm
+  rainfallProbability Int? // percentage
+  
+  // Forecast Data (7 days)
+  forecast    Json[]
+  
+  // Agricultural Indices
+  heatIndex   Float?
+  soilMoistureIndex Float?
+  pestRiskIndex Float?
+  farmRisk    FarmRiskLevel @default(LOW)
+  
+  createdAt   DateTime @default(now())
+
+  @@index([location, date])
+  @@map("weather_data")
+}
+
+model WeatherForecast {
+  id          String   @id @default(cuid())
+  location    String
+  latitude    Float
+  longitude   Float
+  
+  date        DateTime
+  tempMax     Float
+  tempMin     Float
+  humidity    Int?
+  rainfall    Float?   // mm precipitation
+  windSpeed   Float?
+  condition   WeatherCondition?
+  
+  farmRisk    FarmRiskLevel @default(LOW)
+  farmActions String[] // Recommended daily farm actions
+  alerts      Json?    // Weather alerts for the day
+  
+  createdAt   DateTime @default(now())
+
+  @@unique([location, date])
+  @@map("weather_forecasts")
+}
+
+model WeatherAlert {
+  id          String   @id @default(cuid())
+  userId      String?
+  
+  alertType   WeatherAlertType
+  severity    AlertSeverity
+  title       String
+  titleHindi  String?
+  description String
+  descriptionHindi String?
+  
+  // Location
+  location    String
+  latitude    Float?
+  longitude   Float?
+  
+  // Timing
+  startsAt    DateTime
+  endsAt      DateTime?
+  validUntil  DateTime?
+  
+  // Agricultural Impact
+  affectedCrops String[]
+  recommendedActions String[]
+  
+  // Status
+  isRead      Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  
+  createdAt   DateTime @default(now())
+
+  // Relations
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("weather_alerts")
+}
+
+model FarmWeatherSubscription {
+  id          String   @id @default(cuid())
+  userId      String
+  farmId      String?
+  
+  latitude    Float
+  longitude   Float
+  location    String?
+  
+  alertTypes  Json     // Array of alert types to subscribe
+  notifyVia   NotificationChannel[]
+  
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("farm_weather_subscriptions")
+}
+
+enum FarmRiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum WeatherCondition {
+  CLEAR
+  CLOUDY
+  PARTLY_CLOUDY
+  RAIN
+  HEAVY_RAIN
+  THUNDERSTORM
+  SNOW
+  FOG
+  DUST
+}
+
+enum WeatherAlertType {
+  HEAT_WAVE
+  COLD_WAVE
+  HEAVY_RAIN
+  DROUGHT
+  FLOOD
+  STRONG_WINDS
+  FROST
+  HAILSTORM
+  PEST_OUTBREAK_RISK
+}
+
+enum AlertSeverity {
+  LOW
+  MODERATE
+  HIGH
+  EXTREME
+}
+
+// ==================== MARKET PRICES ====================
+
+model MarketPrice {
+  id          String   @id @default(cuid())
+  
+  // Crop Details
+  cropName    String
+  cropVariety String?
+  category    CropCategory
+  
+  // Market Details
+  marketName  String
+  marketCode  String?
+  state       String
+  district    String?
+  
+  // Price Information
+  price       Float    // per quintal in INR
+  unit        String   @default("quintal")
+  currency    String   @default("INR")
+  
+  // Price Trends
+  previousPrice Float?
+  priceChange   Float?   // absolute change
+  priceChangePercent Float?
+  trend         PriceTrend @default(STABLE)
+  
+  // Quality Grades
+  grade       String?  // Grade A, B, C, etc.
+  minPrice    Float?
+  maxPrice    Float?
+  avgPrice    Float?
+  
+  // Arrival Information
+  arrivals    Float?   // in quintals
+  arrivalDate DateTime @default(now())
+  
+  // Forecast
+  forecastPrice Float?
+  forecastTrend PriceTrend?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([cropName, marketName, arrivalDate])
+  @@map("market_prices")
+}
+
+model MarketPriceAlert {
+  id          String   @id @default(cuid())
+  userId      String
+  
+  // Alert Configuration
+  cropName    String
+  marketName  String?
+  alertType   PriceAlertType
+  targetPrice Float?
+  priceChangePercent Float?
+  
+  // Notification Settings
+  isActive    Boolean  @default(true)
+  notifyVia   NotificationChannel[]
+  
+  // Tracking
+  triggeredAt DateTime?
+  triggerCount Int @default(0)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("market_price_alerts")
+}
+
+enum CropCategory {
+  CEREALS
+  PULSES
+  OILSEEDS
+  VEGETABLES
+  FRUITS
+  SPICES
+  FIBERS
+  SUGAR
+  DAIRY
+  MEAT
+  POULTRY
+  FISHERY
+}
+
+enum PriceTrend {
+  UP
+  DOWN
+  STABLE
+  VOLATILE
+}
+
+enum PriceAlertType {
+  PRICE_ABOVE
+  PRICE_BELOW
+  PRICE_CHANGE_PERCENT
+  DAILY_UPDATE
+}
+
+enum NotificationChannel {
+  EMAIL
+  SMS
+  PUSH
+  WHATSAPP
+}
+
+model MandiList {
+  id              String   @id @default(cuid())
+  
+  name            String
+  nameHindi       String?
+  code            String   @unique
+  
+  district        String
+  state           String
+  
+  latitude        Float?
+  longitude       Float?
+  address         String?
+  
+  activeCommodities Json   // Array of commodity names
+  operatingHours  String?
+  contactNumber   String?
+  
+  isActive        Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([district, state])
+  @@map("mandi_list")
+}
+
+model PriceForecast {
+  id              String   @id @default(cuid())
+  
+  commodity       String
+  mandi           String
+  
+  predictedPrice  Float
+  confidence      Float    // 0-1 confidence
+  trend           PriceTrend
+  
+  forecastDate    DateTime
+  reasoning       String?  // AI reasoning
+  
+  generatedAt     DateTime @default(now())
+
+  @@unique([commodity, mandi, forecastDate])
+  @@map("price_forecasts")
+}
+
+// ==================== GOVERNMENT SCHEMES ====================
+
+model GovernmentScheme {
+  id          String   @id @default(cuid())
+  
+  // Basic Information
+  schemeCode  String   @unique
+  name        String
+  nameLocal   String?  // Local language name
+  shortDescription String
+  fullDescription String
+  
+  // Category & Tags
+  category    SchemeCategory
+  subCategory String?
+  tags        String[]
+  
+  // Eligibility
+  eligibilityCriteria Json // Structured eligibility data
+  eligibleStates String[]
+  eligibleCrops String[]
+  minLandSize Float? // in acres
+  maxLandSize Float? // in acres
+  incomeLimit Float? // annual income limit
+  
+  // Benefits
+  benefits    Json[] // Array of benefit objects
+  subsidyAmount Json? // Min/max subsidy amounts
+  interestRate Float? // For loan schemes
+  
+  // Application Process
+  applicationProcess String[]
+  requiredDocuments String[]
+  applicationUrl String?
+  offlineApplication Boolean @default(true)
+  applicationCenters String[] // Office locations
+  
+  // Timeline
+  startDate   DateTime?
+  endDate     DateTime?
+  isPermanent Boolean  @default(false)
+  
+  // Status
+  status      SchemeStatus @default(ACTIVE)
+  
+  // Contact
+  helplineNumber String?
+  helplineEmail  String?
+  websiteUrl     String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  applications SchemeApplication[]
+
+  @@map("government_schemes")
+}
+
+model SchemeApplication {
+  id          String   @id @default(cuid())
+  
+  userId      String
+  schemeId    String
+  
+  // Application Details
+  applicationNumber String @unique
+  status      ApplicationStatus @default(DRAFT)
+  
+  // Personal Information
+  applicantName String
+  applicantPhone String
+  applicantEmail String?
+  address     String
+  district    String
+  state       String
+  pincode     String
+  
+  // Land Details
+  landSize    Float
+  landLocation String
+  landDocuments String[] // URLs to uploaded documents
+  
+  // Crop Details
+  cropsGrown  String[]
+  
+  // Bank Details
+  bankName    String?
+  accountNumber String?
+  ifscCode    String?
+  
+  // Documents
+  documents   Json[] // Array of uploaded document metadata
+  
+  // Application Progress
+  submittedAt DateTime?
+  verifiedAt  DateTime?
+  approvedAt  DateTime?
+  rejectedAt  DateTime?
+  rejectionReason String?
+  
+  // Tracking
+  currentStage String @default("DOCUMENT_UPLOAD")
+  stageHistory Json[]
+  
+  // Officer Details
+  assignedOfficer String?
+  officerNotes    String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user   User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  scheme GovernmentScheme @relation(fields: [schemeId], references: [id], onDelete: Cascade)
+
+  @@map("scheme_applications")
+}
+
+enum SchemeCategory {
+  SUBSIDY
+  LOAN
+  INSURANCE
+  PENSION
+  GRANT
+  TRAINING
+  EQUIPMENT
+  SEEDS
+  FERTILIZER
+  IRRIGATION
+  STORAGE
+  MARKETING
+}
+
+enum SchemeStatus {
+  ACTIVE
+  INACTIVE
+  EXPIRED
+  COMING_SOON
+  SUSPENDED
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  DOCUMENT_VERIFICATION
+  FIELD_VERIFICATION
+  APPROVED
+  REJECTED
+  DISBURSED
+}
+
+model UserEligibility {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  
+  // Land Information
+  landArea        Float?   // in acres
+  landType        LandType?
+  
+  // Financial Information
+  annualIncome    Float?
+  incomeCategory  IncomeCategory?
+  
+  // Existing Benefits
+  hasKCC          Boolean  @default(false)
+  hasPMKisan      Boolean  @default(false)
+  hasNREGA        Boolean  @default(false)
+  
+  // Verification Status
+  bankAccountLinked Boolean @default(false)
+  aadhaarLinked   Boolean  @default(false)
+  
+  // Category
+  category        SocialCategory?
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("user_eligibility")
+}
+
+enum LandType {
+  OWNED
+  LEASED
+  SHARED
+  GOVERNMENT_ALLOTTED
+}
+
+enum IncomeCategory {
+  BPL
+  APL
+  LOWER_MIDDLE
+  MIDDLE
+  UPPER_MIDDLE
+}
+
+enum SocialCategory {
+  GENERAL
+  OBC
+  SC
+  ST
+  EWS
+}
+
+// ==================== CONSULTATIONS ====================
+
+model Consultation {
+  id          String   @id @default(cuid())
+  userId      String
+  
+  // Consultation Details
+  type        ConsultationType
+  subject     String
+  description String
+  
+  // Related Entities
+  farmId      String?
+  cropId      String?
+  
+  // Status
+  status      ConsultationStatus @default(OPEN)
+  priority    Priority @default(MEDIUM)
+  
+  // Assignment
+  assignedTo  String?  // Expert ID
+  assignedAt  DateTime?
+  
+  // Communication
+  messages    Json[]   // Array of message objects
+  attachments String[] // File URLs
+  
+  // Resolution
+  resolution  String?
+  resolvedAt  DateTime?
+  
+  // Ratings
+  userRating  Int?
+  userFeedback String?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("consultations")
+}
+
+enum ConsultationType {
+  CROP_ADVISORY
+  DISEASE_MANAGEMENT
+  SOIL_HEALTH
+  IRRIGATION
+  MARKET_QUERY
+  SCHEME_GUIDANCE
+  GENERAL
+}
+
+enum ConsultationStatus {
+  OPEN
+  ASSIGNED
+  IN_PROGRESS
+  WAITING_FOR_USER
+  RESOLVED
+  CLOSED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+// ==================== USER ACTIVITY ====================
+
+model UserActivity {
+  id          String   @id @default(cuid())
+  userId      String
+  
+  activityType ActivityType
+  description String
+  metadata    Json?    // Additional context
+  
+  // Device/Location Info
+  ipAddress   String?
+  userAgent   String?
+  location    String?
+  
+  createdAt   DateTime @default(now())
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@map("user_activities")
+}
+
+enum ActivityType {
+  LOGIN
+  LOGOUT
+  PROFILE_UPDATE
+  FARM_CREATED
+  FARM_UPDATED
+  CROP_ADDED
+  CROP_UPDATED
+  CROP_RECOMMENDATION
+  DISEASE_DETECTION
+  WEATHER_CHECKED
+  PRICE_CHECKED
+  SCHEME_VIEWED
+  SCHEME_APPLIED
+  CONSULTATION_CREATED
+  CONSULTATION_REPLIED
+  SETTINGS_CHANGED
+}
+
+// ==================== MANDI FINDER ====================
+
+model Mandi {
+  id           String       @id @default(cuid())
+  name         String
+  nameHindi    String
+  district     String
+  state        String       @default("Uttar Pradesh")
+  lat          Float
+  lng          Float
+  address      String
+  phone        String?
+  openDays     String       @default("Mon-Sat")
+  openTime     String       @default("6:00 AM - 2:00 PM")
+  totalTraders Int          @default(0)
+  isActive     Boolean      @default(true)
+  prices       MandiPrice[]
+  createdAt    DateTime     @default(now())
+
+  @@index([state, district])
+  @@map("mandis")
+}
+
+model MandiPrice {
+  id             String   @id @default(cuid())
+  mandiId        String
+  mandi          Mandi    @relation(fields: [mandiId], references: [id], onDelete: Cascade)
+  commodity      String
+  commodityHindi String
+  price          Float
+  minPrice       Float
+  maxPrice       Float
+  unit           String   @default("quintal")
+  arrivals       Int      @default(0)
+  date           DateTime @default(now())
+  change         Float    @default(0)
+  changePercent  Float    @default(0)
+  quality        String   @default("FAQ")
+
+  @@index([mandiId, commodity, date])
+  @@map("mandi_prices")
+}
+
+model UserPriceAlert {
+  id          String    @id @default(cuid())
+  userId      String
+  commodity   String
+  targetPrice Float
+  condition   String    // ABOVE or BELOW
+  mandiId     String?
+  isActive    Boolean   @default(true)
+  triggeredAt DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([userId, commodity])
+  @@map("user_price_alerts")
+}
+
+// ==================== FARMER COMMUNITY ====================
+
+model Post {
+  id            String     @id @default(cuid())
+  userId        String
+  user          User       @relation("UserPosts", fields: [userId], references: [id], onDelete: Cascade)
+  type          PostType
+  title         String?
+  content       String     @db.Text
+  contentHindi  String?    @db.Text
+  images        String[]
+  tags          String[]
+  crop          String?
+  district      String?
+  state         String?
+  lat           Float?
+  lng           Float?
+  isVerified    Boolean    @default(false)
+  isAnonymous   Boolean    @default(false)
+  isPinned      Boolean    @default(false)
+  likesCount    Int        @default(0)
+  commentsCount Int        @default(0)
+  savesCount    Int        @default(0)
+  viewsCount    Int        @default(0)
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  likes         PostLike[]
+  comments      Comment[]
+  saves         PostSave[]
+  reports       PostReport[]
+
+  @@index([userId, createdAt])
+  @@index([type, createdAt])
+  @@index([district, state])
+  @@map("posts")
+}
+
+enum PostType {
+  TIP
+  PEST_ALERT
+  PRICE_ALERT
+  SUCCESS_STORY
+  QUESTION
+  WEATHER_ALERT
+}
+
+model Comment {
+  id         String    @id @default(cuid())
+  postId     String
+  post       Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId     String
+  user       User      @relation("UserComments", fields: [userId], references: [id], onDelete: Cascade)
+  content    String    @db.Text
+  parentId   String?
+  parent     Comment?  @relation("Replies", fields: [parentId], references: [id])
+  replies    Comment[] @relation("Replies")
+  likesCount Int       @default(0)
+  isAI       Boolean   @default(false)
+  createdAt  DateTime  @default(now())
+
+  @@index([postId, createdAt])
+  @@map("comments")
+}
+
+model PostLike {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  createdAt DateTime @default(now())
+
+  @@unique([postId, userId])
+  @@map("post_likes")
+}
+
+model PostSave {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  createdAt DateTime @default(now())
+
+  @@unique([postId, userId])
+  @@map("post_saves")
+}
+
+model PostReport {
+  id        String   @id @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  reason    String
+  createdAt DateTime @default(now())
+
+  @@index([postId])
+  @@map("post_reports")
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  @@unique([followerId, followingId])
+  @@map("follows")
+}
+
+model FarmerProfile {
+  id             String    @id @default(cuid())
+  userId         String    @unique
+  bio            String?
+  totalLand      Float?
+  crops          String[]
+  experience     Int?
+  isVerified     Boolean   @default(false)
+  verifiedAt     DateTime?
+  followersCount Int       @default(0)
+  followingCount Int       @default(0)
+  postsCount     Int       @default(0)
+  reputationScore Int      @default(0)
+  badges         String[]
+  district       String?
+  state          String?
+  avatar         String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@map("farmer_profiles")
+}
+
+// ==================== FASAL WIKI ====================
+
+model CropWiki {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  name             String
+  nameHindi        String
+  scientificName   String
+  family           String
+  origin           String
+  category         String
+  emoji            String
+  description      String   @db.Text
+  descriptionHindi String   @db.Text
+  climate          Json
+  soil             Json
+  seasons          Json
+  varieties        Json
+  nutrition        Json
+  irrigation       Json
+  pestsDiseases    Json
+  harvesting       Json
+  profitAnalysis   Json
+  govtSupport      Json
+  relatedCrops     String[]
+  viewsCount       Int      @default(0)
+  createdAt        DateTime @default(now())
+
+  @@map("crop_wiki")
+}
+
+model WikiBookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  cropSlug  String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, cropSlug])
+  @@map("wiki_bookmarks")
+}
+
+// ==================== EXPERT CONNECT ====================
+
+model Expert {
+  id                String    @id @default(cuid())
+  userId            String    @unique
+  name              String
+  nameHindi         String
+  avatar            String?
+  title             String
+  titleHindi        String
+  specializations   String[]
+  crops             String[]
+  languages         String[]
+  experience        Int
+  qualification     String
+  organization      String
+  district          String
+  state             String
+  rating            Float     @default(0)
+  ratingCount       Int       @default(0)
+  totalSessions     Int       @default(0)
+  responseRate      Int       @default(98)
+  avgResponseTime   String    @default("< 2 hrs")
+  pricePerCall      Int
+  pricePerChat      Int
+  isOnline          Boolean   @default(false)
+  isVerified        Boolean   @default(true)
+  isKVK             Boolean   @default(false)
+  isFeatured        Boolean   @default(false)
+  about             String    @db.Text
+  aboutHindi        String    @db.Text
+  achievements      String[]
+  availability      Json
+  bookings          ExpertBooking[]
+  reviews           ExpertReview[]
+  createdAt         DateTime  @default(now())
+}
+
+model ExpertBooking {
+  id            String        @id @default(cuid())
+  expertId      String
+  expert        Expert        @relation(fields:[expertId], references:[id])
+  userId        String
+  date          DateTime
+  timeSlot      String
+  duration      Int           @default(30)
+  type          CallType      @default(VIDEO)
+  status        BookingStatus @default(PENDING)
+  topic         String
+  topicHindi    String?
+  cropConcern   String?
+  paymentStatus String        @default("PENDING")
+  paymentId     String?
+  amount        Int
+  meetingLink   String?
+  recordingUrl  String?
+  notes         String?
+  cancelReason  String?
+  review        ExpertReview?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+enum CallType {
+  VIDEO
+  VOICE
+  CHAT
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+model ExpertReview {
+  id          String        @id @default(cuid())
+  bookingId   String        @unique
+  booking     ExpertBooking @relation(fields:[bookingId], references:[id])
+  expertId    String
+  expert      Expert        @relation(fields:[expertId], references:[id])
+  userId      String
+  rating      Int
+  review      String
+  reviewHindi String?
+  helpful     Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+}

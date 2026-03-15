@@ -1,0 +1,1373 @@
+   ▲ Next.js 14.0.4
+   - Local:        http://localhost:3001
+   - Environments: .env
+
+ ✓ Ready in 2.1s
+ ○ Compiling /_error ...
+ ✓ Compiled /api/wiki/search in 2.2s (540 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ✓ Compiled /api/wiki/crops/[slug] in 134ms (86 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ○ Compiling /wiki ...
+ ✓ Compiled /wiki in 644ms (606 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@600;700;800&display=swap"). Use Document instead. 
+See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
+ ✓ Compiled /api/wiki/seasonal in 149ms (124 modules)
+ ✓ Compiled (126 modules)
+ ○ Compiling /wiki/[slug] ...
+ ✓ Compiled /wiki/[slug] in 803ms (1323 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 41ms (369 modules)
+ ✓ Compiled /api/wiki/ai-guide in 247ms (365 modules)
+[wiki/ai-guide] Error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CYzwhax7kftzBYYZnnVeg"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/ai-guide.js:91:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Fri, 13 Mar 2026 10:45:23 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CYzwhax7kftzBYYZnnVeg',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '70',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=70',
+    'cf-cache-status': 'DYNAMIC',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-ray': '9dba72e10c37518d-DEL'
+  },
+  requestID: 'req_011CYzwhax7kftzBYYZnnVeg',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CYzwhax7kftzBYYZnnVeg'
+  }
+}
+ ○ Compiling /wiki ...
+ ✓ Compiled /wiki in 597ms (1357 modules)
+Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap"). Use Document instead. 
+See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
+ ○ Compiling /login ...
+ ✓ Compiled /login in 509ms (1363 modules)
+Do not add stylesheets using next/head (see <link rel="stylesheet"> tag with href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Sora:wght@600;700&display=swap"). Use Document instead. 
+See more info here: https://nextjs.org/docs/messages/no-stylesheets-in-head-component
+ ✓ Compiled /dashboard in 416ms (1389 modules)
+ ✓ Compiled /api/wiki/seasonal in 64ms (401 modules)
+ ✓ Compiled /schemes in 387ms (1407 modules)
+ ✓ Compiled /api/schemes/all in 99ms (412 modules)
+ ✓ Compiled /api/wiki/crops in 119ms (414 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 149ms (416 modules)
+[wiki/ai-guide] Error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ1LK8KYccM4WX7nJ4ZT1"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/ai-guide.js:91:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Fri, 13 Mar 2026 15:41:55 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ1LK8KYccM4WX7nJ4ZT1',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '109',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=110',
+    'cf-cache-status': 'DYNAMIC',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-ray': '9dbc25422a38d7e5-DEL'
+  },
+  requestID: 'req_011CZ1LK8KYccM4WX7nJ4ZT1',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ1LK8KYccM4WX7nJ4ZT1'
+  }
+}
+ ✓ Compiled in 1024ms (491 modules)
+ ✓ Compiled in 354ms (491 modules)
+ ✓ Compiled in 430ms (850 modules)
+ ✓ Compiled in 358ms (850 modules)
+ ✓ Compiled in 303ms (491 modules)
+ ✓ Compiled in 688ms (851 modules)
+ ✓ Compiled /wiki in 437ms (870 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+ ○ Compiling /wiki/[slug] ...
+ ✓ Compiled /wiki/[slug] in 567ms (1339 modules)
+ ○ Compiling /login ...
+ ✓ Compiled /login in 545ms (874 modules)
+ ✓ Compiled /register in 125ms (661 modules)
+ ✓ Compiled /dashboard in 130ms (690 modules)
+ ✓ Compiled /api/wiki/seasonal in 151ms (189 modules)
+ ✓ Compiled /wiki in 161ms (722 modules)
+ ✓ Compiled /api/wiki/crops in 70ms (200 modules)
+ ○ Compiling /wiki/[slug] ...
+ ✓ Compiled /wiki/[slug] in 615ms (1389 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 55ms (402 modules)
+ ✓ Compiled /_error in 326ms (658 modules)
+ ✓ Compiled /api/wiki/seasonal in 63ms (180 modules)
+ ✓ Compiled /wiki in 284ms (670 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+ ✓ Compiled /api/wiki/seasonal in 96ms (179 modules)
+ ✓ Compiled (181 modules)
+ ○ Compiling /register ...
+ ✓ Compiled /register in 603ms (718 modules)
+ ○ Compiling /wiki/[slug] ...
+ ✓ Compiled /wiki/[slug] in 1020ms (1383 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 101ms (399 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+ ○ Compiling /schemes ...
+ ✓ Compiled /schemes in 830ms (1399 modules)
+ ✓ Compiled /api/schemes/all in 81ms (406 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 122ms (410 modules)
+ ✓ Compiled /api/schemes/check-eligibility in 314ms (399 modules)
+ ✓ Compiled in 968ms (1383 modules)
+ ✓ Compiled /api/wiki/seasonal in 129ms (394 modules)
+ ✓ Compiled /wiki in 184ms (1383 modules)
+ ✓ Compiled /api/wiki/crops in 290ms (401 modules)
+ ✓ Compiled /api/schemes/all in 240ms (375 modules)
+ ✓ Compiled /api/wiki/seasonal in 56ms (377 modules)
+ ✓ Compiled /register in 422ms (1382 modules)
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 687ms (1394 modules)
+ ✓ Compiled /schemes in 227ms (1402 modules)
+ ○ Compiling /api/wiki/crops/[slug] ...
+ ✓ Compiled /api/wiki/crops/[slug] in 678ms (376 modules)
+ ✓ Compiled in 644ms (969 modules)
+ ✓ Compiled in 306ms (969 modules)
+ ✓ Compiled in 348ms (969 modules)
+ ✓ Compiled in 169ms (969 modules)
+ ✓ Compiled in 364ms (969 modules)
+ ○ Compiling /wiki ...
+ ✓ Compiled /wiki in 782ms (1355 modules)
+ ✓ Compiled /api/wiki/seasonal in 112ms (383 modules)
+ ✓ Compiled (385 modules)
+ ✓ Compiled in 778ms (1361 modules)
+ ✓ Compiled in 688ms (1361 modules)
+ ○ Compiling /wiki/recommend ...
+ ✓ Compiled /wiki/recommend in 784ms (1369 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+ ○ Compiling /schemes ...
+ ✓ Compiled /schemes in 683ms (708 modules)
+ ✓ Compiled /api/schemes/all in 64ms (195 modules)
+ ✓ Compiled /wiki/[slug] in 296ms (1380 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 51ms (399 modules)
+ ✓ Compiled /wiki/recommend in 441ms (1392 modules)
+ ✓ Compiled /api/wiki/recommend in 462ms (408 modules)
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2gNXSGCwKtjrYe8yj6g"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:45:33 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2gNXSGCwKtjrYe8yj6g',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '21',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=22',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc200ba1c668e92-DEL'
+  },
+  requestID: 'req_011CZ2gNXSGCwKtjrYe8yj6g',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2gNXSGCwKtjrYe8yj6g'
+  }
+}
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2gP9USfKV78aSs7KCR3"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:45:41 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2gP9USfKV78aSs7KCR3',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '6',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=6',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc200eecf3b59dc-DEL'
+  },
+  requestID: 'req_011CZ2gP9USfKV78aSs7KCR3',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2gP9USfKV78aSs7KCR3'
+  }
+}
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2gWSNPFgmBcyt69cqHg"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:47:20 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2gWSNPFgmBcyt69cqHg',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '10',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=10',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc20359098b59c0-DEL'
+  },
+  requestID: 'req_011CZ2gWSNPFgmBcyt69cqHg',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2gWSNPFgmBcyt69cqHg'
+  }
+}
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2gbVxpmHLVjiTvK3cch"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:48:29 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2gbVxpmHLVjiTvK3cch',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '9',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=9',
+    'cf-cache-status': 'DYNAMIC',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-ray': '9dc205061804976b-DEL'
+  },
+  requestID: 'req_011CZ2gbVxpmHLVjiTvK3cch',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2gbVxpmHLVjiTvK3cch'
+  }
+}
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2gc8KMiYgKG5GfbaBNc"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:48:37 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2gc8KMiYgKG5GfbaBNc',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '8',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=8',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc2053b5c1d54b4-DEL'
+  },
+  requestID: 'req_011CZ2gc8KMiYgKG5GfbaBNc',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2gc8KMiYgKG5GfbaBNc'
+  }
+}
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2girEurABaXupZgfW44"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:50:09 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2girEurABaXupZgfW44',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '14',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=14',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc207755c80548c-DEL'
+  },
+  requestID: 'req_011CZ2girEurABaXupZgfW44',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2girEurABaXupZgfW44'
+  }
+}
+ ✓ Compiled in 664ms (698 modules)
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2gmkdAAZXRtivmxfRmy"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:50:48 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2gmkdAAZXRtivmxfRmy',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '29',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=38',
+    'cf-cache-status': 'DYNAMIC',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-ray': '9dc2086b385fd90e-DEL'
+  },
+  requestID: 'req_011CZ2gmkdAAZXRtivmxfRmy',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2gmkdAAZXRtivmxfRmy'
+  }
+}
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2gyDFMYn5gaJfM1gSFt"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:53:23 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2gyDFMYn5gaJfM1gSFt',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '9',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=9',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc20c3719bf8ae1-DEL'
+  },
+  requestID: 'req_011CZ2gyDFMYn5gaJfM1gSFt',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2gyDFMYn5gaJfM1gSFt'
+  }
+}
+ ✓ Compiled in 1560ms (698 modules)
+ ✓ Compiled in 437ms (510 modules)
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2hAAirY3JBQ9UGQqvtt"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:55:52 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2hAAirY3JBQ9UGQqvtt',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '7',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=7',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc20fd80c0b91c2-DEL'
+  },
+  requestID: 'req_011CZ2hAAirY3JBQ9UGQqvtt',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2hAAirY3JBQ9UGQqvtt'
+  }
+}
+ ✓ Compiled /api/wiki/seasonal in 91ms (190 modules)
+ ✓ Compiled (192 modules)
+ ○ Compiling /wiki/[slug] ...
+ ✓ Compiled /wiki/[slug] in 645ms (1371 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 101ms (395 modules)
+ ✓ Compiled /api/wiki/ai-guide in 162ms (397 modules)
+[wiki/ai-guide] Error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2hCnUjKtL9sAS8iJ1jn"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/ai-guide.js:91:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:56:28 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2hCnUjKtL9sAS8iJ1jn',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '18',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=18',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc210b5de6b91ce-DEL'
+  },
+  requestID: 'req_011CZ2hCnUjKtL9sAS8iJ1jn',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2hCnUjKtL9sAS8iJ1jn'
+  }
+}
+[wiki/ai-guide] Error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2hE13od5J4FtJ98cFY3"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/ai-guide.js:91:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:56:44 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2hE13od5J4FtJ98cFY3',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '6',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=7',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-cache-status': 'DYNAMIC',
+    'cf-ray': '9dc2111d0ed254c6-DEL'
+  },
+  requestID: 'req_011CZ2hE13od5J4FtJ98cFY3',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2hE13od5J4FtJ98cFY3'
+  }
+}
+[wiki/ai-guide] Error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2hEaq47uiFAoSQ8sqe9"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/ai-guide.js:91:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:56:52 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2hEaq47uiFAoSQ8sqe9',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '9',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=10',
+    'cf-cache-status': 'DYNAMIC',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-ray': '9dc2114e5fc82b3f-DEL'
+  },
+  requestID: 'req_011CZ2hEaq47uiFAoSQ8sqe9',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2hEaq47uiFAoSQ8sqe9'
+  }
+}
+ ✓ Compiled in 617ms (680 modules)
+ ✓ Compiled /api/wiki/recommend in 97ms (188 modules)
+Recommend API error: AuthenticationError: 401 {"type":"error","error":{"type":"authentication_error","message":"invalid x-api-key"},"request_id":"req_011CZ2hSoVtUVixGhGVLHguq"}
+    at APIError.generate (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/core/error.mjs:40:20)
+    at Anthropic.makeStatusError (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:155:32)
+    at Anthropic.makeRequest (file:///Users/devrajput/Project/AgriNova-for-testing-1/node_modules/@anthropic-ai/sdk/client.mjs:309:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async handler (webpack-internal:///(api)/./pages/api/wiki/recommend.js:176:25) {
+  status: 401,
+  headers: Headers {
+    date: 'Sat, 14 Mar 2026 08:59:38 GMT',
+    'content-type': 'application/json',
+    'transfer-encoding': 'chunked',
+    connection: 'keep-alive',
+    'x-should-retry': 'false',
+    'request-id': 'req_011CZ2hSoVtUVixGhGVLHguq',
+    'strict-transport-security': 'max-age=31536000; includeSubDomains; preload',
+    server: 'cloudflare',
+    'x-envoy-upstream-service-time': '8',
+    'content-encoding': 'gzip',
+    vary: 'Accept-Encoding',
+    'server-timing': 'proxy;dur=8',
+    'cf-cache-status': 'DYNAMIC',
+    'x-robots-tag': 'none',
+    'content-security-policy': "default-src 'none'; frame-ancestors 'none'",
+    'cf-ray': '9dc2155a48f6c0e2-DEL'
+  },
+  requestID: 'req_011CZ2hSoVtUVixGhGVLHguq',
+  error: {
+    type: 'error',
+    error: { type: 'authentication_error', message: 'invalid x-api-key' },
+    request_id: 'req_011CZ2hSoVtUVixGhGVLHguq'
+  }
+}
+ ✓ Compiled /api/wiki/crops in 54ms (190 modules)
+ ✓ Compiled (192 modules)
+ ✓ Compiled in 881ms (660 modules)
+ ✓ Compiled /api/wiki/seasonal in 54ms (176 modules)
+ ✓ Compiled /wiki in 176ms (694 modules)
+ ✓ Compiled /api/wiki/crops in 54ms (186 modules)
+ ○ Compiling /schemes ...
+ ✓ Compiled /schemes in 534ms (716 modules)
+ ✓ Compiled /api/schemes/all in 54ms (199 modules)
+ ✓ Compiled in 1061ms (660 modules)
+ ✓ Compiled /api/wiki/seasonal in 49ms (176 modules)
+ ✓ Compiled /wiki in 167ms (694 modules)
+ ✓ Compiled /api/wiki/crops in 46ms (186 modules)
+ ○ Compiling /wiki/[slug] ...
+ ✓ Compiled /wiki/[slug] in 755ms (1365 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 59ms (390 modules)
+ ⨯ ./src/components/wiki/CropCard.js
+Error: 
+  [31mx[0m Unexpected eof
+     ,-[[36;1;4m/Users/devrajput/Project/AgriNova-for-testing-1/src/components/wiki/CropCard.js[0m:103:1]
+ [2m103[0m |       </Link>
+ [2m104[0m |     </motion.div>
+ [2m105[0m |   )
+ [2m106[0m | }
+     : [31;1m ^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/wiki/CropCard.js
+ ⨯ ./src/components/wiki/AdvisorResult.js
+Error: 
+  [31mx[0m Unexpected eof
+     ,-[[36;1;4m/Users/devrajput/Project/AgriNova-for-testing-1/src/components/wiki/AdvisorResult.js[0m:178:1]
+ [2m178[0m |       </button>
+ [2m179[0m |     </div>
+ [2m180[0m |   )
+ [2m181[0m | }
+     : [31;1m ^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/wiki/AdvisorResult.js
+./src/components/wiki/CropAdvisor.js
+ ⨯ ./src/components/wiki/AdvisorResult.js
+Error: 
+  [31mx[0m Unexpected eof
+     ,-[[36;1;4m/Users/devrajput/Project/AgriNova-for-testing-1/src/components/wiki/AdvisorResult.js[0m:178:1]
+ [2m178[0m |       </button>
+ [2m179[0m |     </div>
+ [2m180[0m |   )
+ [2m181[0m | }
+     : [31;1m ^[0m
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/components/wiki/AdvisorResult.js
+./src/components/wiki/CropAdvisor.js
+ ✓ Compiled in 418ms (680 modules)
+ ✓ Compiled /api/wiki/seasonal in 238ms (184 modules)
+ ✓ Compiled (186 modules)
+ ✓ Compiled in 1574ms (705 modules)
+ ✓ Compiled in 766ms (705 modules)
+ ✓ Compiled in 863ms (705 modules)
+ ✓ Compiled in 581ms (705 modules)
+ ○ Compiling /wiki/[slug] ...
+ ✓ Compiled /wiki/[slug] in 968ms (1374 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 88ms (393 modules)
+ ✓ Compiled in 555ms (980 modules)
+ ✓ Compiled in 303ms (980 modules)
+ ✓ Compiled in 408ms (980 modules)
+ ✓ Compiled in 151ms (980 modules)
+ ✓ Compiled in 297ms (980 modules)
+ ✓ Compiled in 234ms (980 modules)
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 758ms (1368 modules)
+ ⨯ Error: Cannot find module './chunks/vendor-chunks/next.js'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/_document.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/load-components.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/utils.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-middleware.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-runtime.js:1:1881)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/_document.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/load-components.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/utils.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-middleware.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ],
+  page: '/contact'
+}
+ ✓ Compiled /_error in 282ms (1370 modules)
+ ✓ Compiled in 1000ms (972 modules)
+ ✓ Compiled in 255ms (972 modules)
+ ✓ Compiled in 211ms (972 modules)
+ ✓ Compiled in 310ms (972 modules)
+ ✓ Compiled in 148ms (972 modules)
+ ✓ Compiled in 117ms (972 modules)
+ ✓ Compiled in 126ms (972 modules)
+ ✓ Compiled in 162ms (972 modules)
+ ✓ Compiled /api/wiki/crops/[slug] in 124ms (376 modules)
+ ✓ Compiled in 3.4s (1339 modules)
+ ✓ Compiled in 537ms (966 modules)
+ ✓ Compiled in 308ms (966 modules)
+ ✓ Compiled in 193ms (966 modules)
+ ✓ Compiled in 442ms (966 modules)
+ ✓ Compiled in 323ms (1323 modules)
+ ✓ Compiled in 594ms (966 modules)
+ ✓ Compiled in 407ms (966 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, rename '/Users/devrajput/Project/AgriNova-for-testing-1/.next/cache/webpack/client-development/7.pack.gz_' -> '/Users/devrajput/Project/AgriNova-for-testing-1/.next/cache/webpack/client-development/7.pack.gz'
+ ✓ Compiled /api/wiki/seasonal in 360ms (371 modules)
+ ○ Compiling /wiki ...
+ ✓ Compiled /wiki in 718ms (1347 modules)
+ ✓ Compiled /api/wiki/crops in 120ms (378 modules)
+ ✓ Compiled /_error in 233ms (1351 modules)
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+Could not find files for /dashboard in .next/build-manifest.json
+Could not find files for /dashboard in .next/build-manifest.json
+ ○ Compiling / ...
+ ✓ Compiled / in 1438ms (1341 modules)
+ ⚠ Fast Refresh had to perform a full reload. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+ ○ Compiling /register ...
+ ✓ Compiled /register in 1104ms (1369 modules)
+ ○ Compiling /login ...
+ ✓ Compiled /login in 771ms (1375 modules)
+ ✓ Compiled /api/wiki/seasonal in 417ms (397 modules)
+ ✓ Compiled /schemes in 480ms (1405 modules)
+ ✓ Compiled /api/schemes/all in 60ms (408 modules)
+ ✓ Compiled /wiki in 202ms (1418 modules)
+ ✓ Compiled /api/wiki/crops in 100ms (415 modules)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+Warning: A title element received an array with more than 1 element as children. In browsers title Elements can only have Text Nodes as children. If the children being rendered output more than a single text node in aggregate the browser will display markup and comments as text in the title and hydration will likely fail and fall back to client rendering
+    at title
+    at head
+    at Head (webpack-internal:///./node_modules/next/dist/pages/_document.js:258:1)
+    at html
+    at Html (webpack-internal:///./node_modules/next/dist/pages/_document.js:676:132)
+    at Document (webpack-internal:///./node_modules/next/dist/pages/_document.js:692:1)
+ ✓ Compiled /api/wiki/crops/[slug] in 202ms (375 modules)
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops/[slug].js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops/[slug].js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ✓ Compiled /_error in 291ms (1343 modules)
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ✓ Compiled in 690ms (966 modules)
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/crops.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ✓ Compiled /_error in 251ms (1341 modules)
+ ✓ Compiled /api/wiki/seasonal in 85ms (376 modules)
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/seasonal.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/seasonal.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
+ ⨯ Error: Cannot find module './chunks/undefined'
+Require stack:
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/seasonal.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js
+- /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1475:15)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:55:36
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1048:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1072:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1093:12)
+    at Module._load (node:internal/modules/cjs/loader:1261:25)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.require (node:internal/modules/cjs/loader:1575:12)
+    at mod.require (/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/require-hook.js:65:28)
+    at require (node:internal/modules/helpers:191:16)
+    at o.f.require (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1873)
+    at /Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1352
+    at Array.reduce (<anonymous>)
+    at o.e (/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js:1:1331)
+    at Array.map (<anonymous>) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/webpack-api-runtime.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/.next/server/pages/api/wiki/seasonal.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/node-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/future/helpers/module-loader/route-module-loader.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/routes/app-route.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/export/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/worker.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/build/entries.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/dev/hot-reloader-webpack.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/router-server.js',
+    '/Users/devrajput/Project/AgriNova-for-testing-1/node_modules/next/dist/server/lib/start-server.js'
+  ]
+}
