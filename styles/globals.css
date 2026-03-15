@@ -8,11 +8,52 @@
   --primary-color: #0A6B3A;
   --secondary-color: #FFD700;
   --accent-color: #FFA500;
+
+  /* Light mode colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+.dark {
+  /* Dark mode colors */
+  --bg-primary: #0f1117;
+  --bg-secondary: #1a1d27;
+  --bg-card: #1e2130;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: #2d3148;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  @apply bg-white text-gray-900;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #1e2130;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #2d3148;
+}
+
+/* Dark mode utility classes */
+.dark .dashboard-card {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.dark .feature-card {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
 }
 
 /* Custom scrollbar */

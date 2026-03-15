@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useState, useCallback } from 'react'
+import DarkModeToggle from '../src/components/DarkModeToggle'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -152,20 +153,20 @@ export default function Dashboard() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 flex transition-colors duration-300">
       <Head>
         <title>Dashboard - KisanSaathi</title>
         <meta name="description" content="Agricultural Dashboard" />
       </Head>
 
       {/* Sidebar */}
-      <div className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+      <div className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-900 shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center">
               <Wheat className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">KisanSaathi</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white">KisanSaathi</span>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
@@ -182,7 +183,7 @@ export default function Dashboard() {
                 <Link
                   key={item.id}
                   href={item.href}
-                  className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 text-gray-700 hover:bg-gray-100 hover:text-primary-600"
+                  className="w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600"
                 >
                   <item.icon className="w-5 h-5" />
                   <span className="font-medium">{item.label}</span>
@@ -195,8 +196,8 @@ export default function Dashboard() {
                     setSidebarOpen(false)
                   }}
                   className={`w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-left transition-all duration-200 ${activeTab === item.id
-                      ? 'bg-primary-100 text-primary-700 border-l-4 border-primary-500'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-primary-600'
+                      ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 border-l-4 border-primary-500'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary-600'
                     }`}
                 >
                   <item.icon className="w-5 h-5" />
@@ -211,7 +212,7 @@ export default function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Top Navigation */}
-        <header className="bg-white shadow-sm border-b border-gray-200">
+        <header className="bg-white dark:bg-gray-900 shadow-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center space-x-4">
               <button
@@ -227,13 +228,16 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2 bg-gray-100 rounded-full p-1">
+            <div className="flex items-center space-x-3">
+              {/* Dark Mode Toggle */}
+              <DarkModeToggle />
+
+              <div className="flex items-center space-x-2 bg-gray-100 dark:bg-gray-800 rounded-full p-1">
                 <button
                   onClick={() => setLanguage('en')}
                   className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${language === 'en'
-                      ? 'bg-white text-primary-600 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
+                      ? 'bg-white dark:bg-gray-700 text-primary-600 shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                     }`}
                 >
                   English
@@ -241,8 +245,8 @@ export default function Dashboard() {
                 <button
                   onClick={() => setLanguage('hi')}
                   className={`px-3 py-1 rounded-full text-sm font-medium transition-all ${language === 'hi'
-                      ? 'bg-white text-primary-600 shadow-sm'
-                      : 'text-gray-600 hover:text-gray-900'
+                      ? 'bg-white dark:bg-gray-700 text-primary-600 shadow-sm'
+                      : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                     }`}
                 >
                   हिंदी
@@ -266,8 +270,8 @@ export default function Dashboard() {
                   <User className="w-5 h-5 text-white" />
                 </div>
                 <div className="hidden md:block">
-                  <div className="font-medium text-gray-900">{t[lang].userName}</div>
-                  <div className="text-sm text-gray-500">Farmer</div>
+                  <div className="font-medium text-gray-900 dark:text-white">{t[lang].userName}</div>
+                  <div className="text-sm text-gray-500 dark:text-gray-400">Farmer</div>
                 </div>
 
                 <button
@@ -301,13 +305,13 @@ export default function Dashboard() {
         )}
 
         {/* Dashboard Content */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {/* Weather Card */}
               <div className="dashboard-card">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold text-gray-900">Weather & Alerts</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">Weather & Alerts</h3>
                   <Sun className="w-6 h-6 text-yellow-500" />
                 </div>
 
