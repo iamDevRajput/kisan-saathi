@@ -27,11 +27,13 @@ import {
   Eye,
   EyeOff,
   Volume2,
-  Sparkles
+  Sparkles,
+  Stethoscope
 } from 'lucide-react'
 
 const quickActions = [
   { icon: Camera, title: 'Pest Detection', color: 'from-green-500 to-green-600', href: '/pest-detection' },
+  { icon: Stethoscope, title: 'Expert Connect', titleHindi: 'विशेषज्ञ से बात', color: 'from-teal-500 to-teal-600', href: '/experts' },
   { icon: Volume2, title: 'AI Assistant', color: 'from-blue-500 to-blue-600' },
   { icon: TrendingUp, title: 'Market Prices', color: 'from-purple-500 to-purple-600', href: '/market-prices' },
   { icon: FileText, title: 'Generate Report', color: 'from-orange-500 to-orange-600' },
@@ -46,6 +48,7 @@ const sidebarItems = [
   { id: 'market', icon: TrendingUp, label: 'Market Prices' },
   { id: 'wiki', icon: BookOpen, label: 'फसल ज्ञान', href: '/wiki' },
   { id: 'advisor', icon: Sparkles, label: 'Crop Advisor', labelHindi: 'फसल सलाह', href: '/wiki/recommend' },
+  { id: 'experts', icon: Stethoscope, label: 'Expert Connect', labelHindi: 'विशेषज्ञ', href: '/experts' },
   { id: 'schemes', icon: FileText, label: 'Govt Schemes', href: '/schemes' },
   { id: 'settings', icon: Settings, label: 'Settings' }
 ]
@@ -415,10 +418,12 @@ export default function Dashboard() {
                       onClick={() => action.href && router.push(action.href)}
                       className="bg-gradient-to-br bg-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                     >
-                      <div className={`w-12 h-12 bg-gradient-to-br ${action.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
+                      <div className={`w-12 h-12 bg-gradient-to-br ${action.color} rounded-xl flex items-center justify-center mx-auto mb-3 shadow-md border border-white/20`}>
                         <action.icon className="w-6 h-6 text-white" />
                       </div>
-                      <p className="font-medium text-gray-900">{action.title}</p>
+                      <p className="font-medium text-gray-900 leading-tight">
+                        {lang === 'hi' && action.titleHindi ? action.titleHindi : action.title}
+                      </p>
                     </button>
                   ))}
                 </div>
