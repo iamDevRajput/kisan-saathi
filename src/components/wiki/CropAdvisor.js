@@ -77,10 +77,11 @@ export default function CropAdvisor({ isHindi }) {
       const data = await res.json()
       if (data.success) {
         setResult(data.data)
-        // Scroll to results smoothly
+        // Scroll to results smoothly after DOM update
         setTimeout(() => {
-          document.getElementById('results-section')?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+          const el = document.getElementById('results-section');
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 400);
       } else {
         setError(isHindi ? 'कुछ गलत हो गया' : 'Something went wrong')
       }
@@ -93,13 +94,8 @@ export default function CropAdvisor({ isHindi }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto pb-24">
+    <div className="max-w-4xl mx-auto pb-16">
       
-      {/* Curved Top Background */}
-      <div 
-        className="fixed inset-0 pointer-events-none z-[-1] bg-[#F0F7F0]" 
-      />
-
       {/* Main Form Card */}
       <div className="bg-white rounded-3xl shadow-xl shadow-green-900/5 relative mt-8">
         
